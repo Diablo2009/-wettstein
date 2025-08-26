@@ -9,5 +9,6 @@
         "directory": "/arcanevm"
     },
     "main": "./index.js",
-    "types": "./index.d.ts"
+    "types": "./index.d.ts",
+    "license": "BSD-3-Clause"
 }

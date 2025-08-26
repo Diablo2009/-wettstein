@@ -1,0 +1,13 @@
+{
+    "name": "@wettstein/arcanevm",
+    "version": "0.1.0-dev",
+    "description": "A NodeJS-powered JS Script Engine and Context Manager.",
+    "author": "Talon Wettstein <wettsteinmp@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Diablo2009/-wettstein.git",
+        "directory": "/arcanevm"
+    },
+    "main": "./index.js",
+    "types": "./index.d.ts"
+}

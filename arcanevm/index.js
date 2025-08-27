@@ -13,7 +13,7 @@ const ArcaneJS = {};
 
     const doesExist = {
         contextManager: false, // Scheme: dataManager[1][ContextManagerId][ContextId]
-        scriptEngine: false
+        scriptEngine: false // Scheme: dataManager[2][ScriptEngineId][SectionId]
     };
 
     function getRandomId() {
@@ -56,8 +56,8 @@ const ArcaneJS = {};
 
             dataManager[1][id] = new Array();
 
-            this.createContext = function cmCreateContext() {
-                let conId = getRandomId();
+            this.createContext = function cmCreateContext(conId) {
+                let conId = (typeof conId == "number" && conId >= 0 && !this.doesContextExist(conId)) ? conId : getRandomId();
 
                 try {
                 while (dataManager[1][id][conId])
@@ -121,7 +121,12 @@ const ArcaneJS = {};
             if (!(contextManager instanceof ContextManager))
                 throw new TypeError("The type of 'contextManager' is not of type ContextManager. (ScriptEngine)");
             
-            const globalContextId = contextManager.createContext();
+            let globalContextId = 0;
+
+            while (contextManager.doesContextExist(globalContextId))
+                globalContextId++;
+
+            contextManager.createContext(globalContextId);
 
             this.addToGlobalContext = function seAddToGlobalContext(name, value) {
                 if (typeof name != "string")

@@ -1,6 +1,7 @@
 declare module "@wettstein/arcanevm" {
     class ContextManager {
         createContext(): number;
+        createContext(id: number): number;
         doesContextExist(id: number): boolean;
         getContext(id: number, callback: (context: any) => void): boolean;
         deleteContext(id: number): boolean;
